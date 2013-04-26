@@ -28,6 +28,9 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http){
       openDialogLogin(this, 'partials/template/login.html');
     }
   };
+
+  $rootScope.goHome = function(){
+  }
 });
 
 myApp.config(['$locationProvider', function($location) {

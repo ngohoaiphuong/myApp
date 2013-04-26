@@ -12,9 +12,14 @@ body {
   font-size: 1.5em;
 }
 
+.mainHeader{
+  /*background-color: gray;*/
+  height: 90px;
+}
+
 .mainMenu{
   position: relative;
-  top: 0px;
+  top: -55px;
   left: 55%;
   /*float: left;*/
   /*padding-right: 10%;*/
@@ -123,4 +128,13 @@ body {
 
 .copyright a{
   text-decoration: none;
+}
+
+.logo{
+  position: relative;
+  left: 0px;
+  border: 0px solid red;
+  width: 330px;
+  height: 80px;
+  background-image: url("../img/logo/my_logo.png");
 }

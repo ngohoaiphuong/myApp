@@ -9,12 +9,19 @@
 
 <hr class="hr_half">
 
-<div class="mainMenu" ng-controller="MainMenuCtrl">
-  <ul class="nav nav-pills">
-    <li ng-repeat="item in data.menus.main_menu" ng-class="navClass(item)">
-      <a href="{{item.url}}">{{item.name}}</a>
-    </li>
-  </ul>
+<div class="mainHeader">
+  <a href="#/">
+    <div class="logo">
+    </div>
+  </a>
+
+  <div class="mainMenu" ng-controller="MainMenuCtrl">
+    <ul class="nav nav-pills">
+      <li ng-repeat="item in data.menus.main_menu" ng-class="navClass(item)">
+        <a href="{{item.url}}">{{item.name}}</a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <hr>
