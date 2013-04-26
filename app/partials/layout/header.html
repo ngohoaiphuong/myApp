@@ -1,0 +1,21 @@
+<div class="MainOauth" ng-controller="MainOptionsCtrl">
+  <ul>
+    <li ng-repeat="item in data.menus.top_menu">
+      <!-- <a href="{{item.url}}">{{item.name}}</a> -->
+      <a ng-click="callFunction(item)">{{item.name}}</a>
+    </li>
+  </ul>
+</div>
+
+<hr class="hr_half">
+
+<div class="mainMenu" ng-controller="MainMenuCtrl">
+  <ul class="nav nav-pills">
+    <li ng-repeat="item in data.menus.main_menu" ng-class="navClass(item)">
+      <a href="{{item.url}}">{{item.name}}</a>
+    </li>
+  </ul>
+</div>
+
+<hr>
+

@@ -1,20 +1,38 @@
 <!doctype html>
-<html lang="en" ng-app="phonecat">
-<head>
-  <meta charset="utf-8">
-  <title>myApp</title>
-  <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <script src="lib/angular/angular.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/services.js"></script>
-  <script src="lib/angular/angular-resource.js"></script>
-</head>
-<body>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>myApp</title>
 
-  <div ng-view></div>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-ui.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/app.css">
 
-</body>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-cookies.js"></script>
+    <script src="lib/bootstrap/ui-bootstrap-tpls-0.2.0.js"></script>
+    <script src="lib/angular/angular-resource.js"></script>
+    <script src="lib/angular-ui/angular-ui.js"></script>
+    <script src="lib/angular-ui/angular-ui-ieshiv.js"></script>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/controllers.js"></script>
+    <script src="assets/js/filters.js"></script>
+    <script src="assets/js/services.js"></script>
+  </head>
+  <body>
+    <div ng-include src="header"></div>
+
+    <div id="mainControl">
+      <div ng-view></div>
+    </div>
+
+    <div ng-include src="footer"></div>
+
+  </body>
 </html>

@@ -1,0 +1,44 @@
+{
+  "options":{
+    "dialog":{
+      "backdrop": true,
+      "keyboard": true,
+      "backdropClick": true,
+      "controller": "DialogController"
+    },
+    "language":{
+      "imgLanguage":"asset/img/languages", 
+      "language":"vi"
+    },
+    "username":""
+  },
+  "menus":{
+    "top_menu":[
+      {"name":"Log In", "url":"#/login", "type":"text"},
+      {"name":"Vi", "url":"#/switch", "type":"icon"}
+    ],
+    "main_menu":[
+      {"name":"Home", "url":"#/home"}, 
+      {"name":"Tutorial", "url":"#/tutorial"}, 
+      {"name":"Events", "url":"#/events"},
+      {"name":"Projects", "url":"#/projects"}
+    ],
+    "footer_menu":[
+      {"name":"About", "url":"#/about"}, 
+      {"name":"Contact", "url":"#/contact"},
+      {"name":"Wikis", "url":"#/wikis"}
+    ]
+  },
+  "templates":{
+    "footer":"partials/layout/footer.html",
+    "header":"partials/layout/header.html",
+    "about":"partials/template/about.html",
+    "contact":"partials/template/contact.html",
+    "event":"partials/template/events.html",
+    "home":"partials/template/home.html",
+    "login":"partials/template/login.html",
+    "project":"partials/template/projects.html",
+    "tutorial":"partials/template/tutorial.html",
+    "welcome":"partials/welcome.html"
+  }
+}
