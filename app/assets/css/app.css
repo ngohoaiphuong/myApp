@@ -130,6 +130,11 @@ body {
   text-decoration: none;
 }
 
+.logoContainer {
+  /*border: 0px solid gray;*/
+  width: 330px;
+}
+
 .logo{
   position: relative;
   left: 0px;
