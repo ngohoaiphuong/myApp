@@ -7,7 +7,7 @@
       "controller": "DialogController"
     },
     "default":{
-      "img":"/assets/img/languages/", 
+      "img":"assets/img/languages/", 
       "lang":"vi",
       "username":""
     }
@@ -16,7 +16,7 @@
     "top_menu":{
       "account":[
         {"name":"Log In", "url":"#/login"},
-        {"name":"Help"}
+        {"name":"Help", "url":"#/help"}
       ],
       "language":[
         {"name":"Vietnamese", "short":"vi", "url":"#/switch"},

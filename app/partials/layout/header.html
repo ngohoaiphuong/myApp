@@ -1,22 +1,22 @@
 <div class="MainOauth" ng-controller="MainOptionsCtrl">
   <ul>
     <li class="dropdown">
-      <a class="dropdown-toggle">
+      <a class="dropdown-toggle" id="account">
         Account
       </a>
       <ul class="dropdown-menu">
         <li ng-repeat="choice in accountList">
-          <a href="#/aaaa">{{choice.name}}</a>
+          <a href="{{choice.url}}">{{choice.name}}</a>
         </li>
       </ul>
     </li>
     <li class="dropdown">
-      <a class="dropdown-toggle">
+      <a class="dropdown-toggle" id="language">
         Language
       </a>
       <ul class="dropdown-menu">
         <li ng-repeat="choice in languageList">
-          <a href="aaaa">
+          <a href="{{choice.url}}">
             <img src="{{choice.path}}">
             {{choice.name}}
           </a>

@@ -21,6 +21,7 @@ function MainOptionsCtrl($scope, $rootScope){
   for(var i=0; i<$scope.languageList.length; i++){
     $scope.languageList[i].path = $rootScope.data.options.default.img + 
             $scope.languageList[i].short + '.png';
+    $scope.languageList[i].url += "/" + $scope.languageList[i].short;
   }
   console.log($scope.languageList);
 }
