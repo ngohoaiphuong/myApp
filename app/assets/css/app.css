@@ -139,4 +139,6 @@ body {
   width: 330px;
   height: 80px;
   background-image: url("../img/logo/my_logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
