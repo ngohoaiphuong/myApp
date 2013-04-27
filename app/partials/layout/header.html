@@ -1,8 +1,27 @@
 <div class="MainOauth" ng-controller="MainOptionsCtrl">
   <ul>
-    <li ng-repeat="item in data.menus.top_menu">
-      <!-- <a href="{{item.url}}">{{item.name}}</a> -->
-      <a ng-click="callFunction(item)">{{item.name}}</a>
+    <li class="dropdown">
+      <a class="dropdown-toggle">
+        Account
+      </a>
+      <ul class="dropdown-menu">
+        <li ng-repeat="choice in accountList">
+          <a href="#/aaaa">{{choice.name}}</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a class="dropdown-toggle">
+        Language
+      </a>
+      <ul class="dropdown-menu">
+        <li ng-repeat="choice in languageList">
+          <a href="aaaa">
+            <img src="{{choice.path}}">
+            {{choice.name}}
+          </a>
+        </li>
+      </ul>
     </li>
   </ul>
 </div>

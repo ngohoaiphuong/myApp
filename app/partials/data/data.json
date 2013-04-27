@@ -6,17 +6,23 @@
       "backdropClick": true,
       "controller": "DialogController"
     },
-    "language":{
-      "imgLanguage":"asset/img/languages", 
-      "language":"vi"
-    },
-    "username":""
+    "default":{
+      "img":"/assets/img/languages/", 
+      "lang":"vi",
+      "username":""
+    }
   },
   "menus":{
-    "top_menu":[
-      {"name":"Log In", "url":"#/login", "type":"text"},
-      {"name":"Vi", "url":"#/switch", "type":"icon"}
-    ],
+    "top_menu":{
+      "account":[
+        {"name":"Log In", "url":"#/login"},
+        {"name":"Help"}
+      ],
+      "language":[
+        {"name":"Vietnamese", "short":"vi", "url":"#/switch"},
+        {"name":"English", "short":"en", "url":"#/switch"}
+      ]
+    },
     "main_menu":[
       {"name":"Home", "url":"#/home"}, 
       {"name":"Tutorial", "url":"#/tutorial"}, 

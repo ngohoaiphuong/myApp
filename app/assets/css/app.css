@@ -10,6 +10,7 @@ body {
 
 .nav-pills > li > a {
   font-size: 1.5em;
+  color: #999999;
 }
 
 .mainHeader{
@@ -89,10 +90,6 @@ body {
 
 .MainOauth li a{
   text-decoration: none;
-  color: #999999;
-}
-
-.nav-pills li a{
   color: #999999;
 }
 
