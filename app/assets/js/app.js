@@ -29,6 +29,14 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http){
     }
   };
 
+  $rootScope.Switch = function(language){
+    console.log(language);
+    $rootScope.data.options.default.lang = language.short;
+    var text = $('#language').text();
+    console.log("[" + text + "]");
+    $('#language').text(language.name);
+  }
+
   $rootScope.goHome = function(){
   }
 });

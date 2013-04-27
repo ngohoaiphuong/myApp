@@ -12,11 +12,11 @@
     </li>
     <li class="dropdown">
       <a class="dropdown-toggle" id="language">
-        Language
+        {{description(data.options.default.lang)}}
       </a>
       <ul class="dropdown-menu">
         <li ng-repeat="choice in languageList">
-          <a href="{{choice.url}}">
+          <a ng-click="Switch(choice)">
             <img src="{{choice.path}}">
             {{choice.name}}
           </a>

@@ -24,6 +24,20 @@ function MainOptionsCtrl($scope, $rootScope){
     $scope.languageList[i].url += "/" + $scope.languageList[i].short;
   }
   console.log($scope.languageList);
+  $scope.description = function(lang){
+    console.log("Lang:" + lang);
+    switch(lang.toLowerCase())
+    {
+      case "vi":
+        return "Vietnamese";
+        break;
+      case "en":
+        return "English";
+        break;
+      default:
+        return "Language";
+    }
+  }
 }
 
 function MainFooterCtrl($scope, $rootScope){
