@@ -1,16 +1,8 @@
 'use strict';
 
-var language = 'vi';
-
 /* Controllers */
 function HomeCtrl($scope, $rootScope, $route, $routeParams){
-  console.log($routeParams);
-  console.log($route);
-  console.log($route.current.templateUrl);
   $scope.yourName = '';
-  // i18n.setLang($rootScope.data.options.default.lang).then(function(d){
-  //   $rootScope.lang = d;
-  // });
 }
 
 function MainMenuCtrl($scope, $rootScope, $routeParams){
@@ -24,23 +16,20 @@ function MainMenuCtrl($scope, $rootScope, $routeParams){
 function MainOptionsCtrl($scope, $rootScope, $routeParams){
   $scope.accountList = $rootScope.data.menus.top_menu.account;
   $scope.languageList = $rootScope.data.menus.top_menu.language;
+
   for(var i=0; i<$scope.languageList.length; i++){
     $scope.languageList[i].path = $rootScope.data.options.default.img + 
             $scope.languageList[i].short + '.png';
     $scope.languageList[i].url += "/" + $scope.languageList[i].short;
   }
+
   $scope.description = function(lang){
-    switch(lang.toLowerCase())
-    {
-      case "vi":
-        return "Vietnamese";
-        break;
-      case "en":
-        return "English";
-        break;
-      default:
-        return "Language";
+    for(var i=0; i<$scope.languageList.length; i++){
+      if($scope.languageList[i].short == lang.toLowerCase()){
+        return $scope.languageList[i].name.toProperCase();
+      }
     }
+    return "Language";
   }
 }
 
@@ -48,19 +37,19 @@ function MainFooterCtrl($scope, $rootScope, $routeParams){
 }
 
 function AboutCtrl($scope, $rootScope, $routeParams){
-  var lat = 10.796865;
-  var lng = 106.66486;
-  var enabled = false;
+  var lat = $rootScope.data.options.map.lat;
+  var lng = $rootScope.data.options.map.lng;
   var ll = new google.maps.LatLng(lat, lng);
 
   $scope.mapOptions = {
     center: ll,
     zoom: 16,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    zoomControl: enabled,
-    panControl: enabled,
-    draggable: enabled,
-    mapMaker: enabled
+    zoomControl: $rootScope.data.options.map.zoomControl,
+    panControl: $rootScope.data.options.map.panControl,
+    draggable: $rootScope.data.options.map.draggable,
+    mapMaker: $rootScope.data.options.map.mapMaker,
+    scrollwheel: $rootScope.data.options.map.scrollwheel
   };
 
   $scope.events = {

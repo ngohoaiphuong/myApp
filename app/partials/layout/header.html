@@ -18,7 +18,7 @@
         <li ng-repeat="choice in languageList">
           <a ng-click="Switch(choice)">
             <img src="{{choice.path}}">
-            {{choice.name}}
+            {{description(choice.short)}}
           </a>
         </li>
       </ul>

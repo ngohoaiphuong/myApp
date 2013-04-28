@@ -1,7 +1,6 @@
 'use strict';
 
 /* App Module */
-
 var myApp = angular.module('myApp', ['ui.bootstrap', 'ngCookies', 'ui']);
 
 myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){

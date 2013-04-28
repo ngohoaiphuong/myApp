@@ -12,6 +12,16 @@
       "username":"",
       "hostlink": "http://www.techpropulsionlabs.com",
       "hostname": "TechPropulsionLabs"
+    },
+    "map":{
+      "lat":10.796865,
+      "lng":106.66486,
+      "zoom":16,
+      "zoomControl": false,
+      "panControl": false,
+      "draggable": false,
+      "mapMaker": false,
+      "scrollwheel": false
     }
   },
   "menus":{
@@ -21,8 +31,8 @@
         {"name":"help", "url":"#/help"}
       ],
       "language":[
-        {"name":"Vietnamese", "short":"vi", "url":"#/switch"},
-        {"name":"English", "short":"en", "url":"#/switch"}
+        {"name":"vietnamese", "short":"vi", "url":"#/switch"},
+        {"name":"english", "short":"en", "url":"#/switch"}
       ]
     },
     "main_menu":[
