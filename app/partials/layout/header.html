@@ -2,11 +2,11 @@
   <ul>
     <li class="dropdown">
       <a class="dropdown-toggle" id="account">
-        Account
+        {{i18n('account')}}
       </a>
       <ul class="dropdown-menu">
         <li ng-repeat="choice in accountList">
-          <a href="{{choice.url}}">{{choice.name}}</a>
+          <a href="{{choice.url}}">{{i18n(choice.name)}}</a>
         </li>
       </ul>
     </li>
@@ -39,7 +39,7 @@
   <div class="mainMenu" ng-controller="MainMenuCtrl">
     <ul class="nav nav-pills">
       <li ng-repeat="item in data.menus.main_menu" ng-class="navClass(item)">
-        <a href="{{item.url}}">{{item.name}}</a>
+        <a href="{{item.url}}">{{i18n(item.name)}}</a>
       </li>
     </ul>
   </div>

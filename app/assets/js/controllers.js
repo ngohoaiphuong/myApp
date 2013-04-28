@@ -5,6 +5,9 @@ var language = 'vi';
 /* Controllers */
 function HomeCtrl($scope, $rootScope){
   $scope.yourName = '';
+  // i18n.setLang($rootScope.data.options.default.lang).then(function(d){
+  //   $rootScope.lang = d;
+  // });
 }
 
 function MainMenuCtrl($scope, $rootScope){
@@ -23,9 +26,7 @@ function MainOptionsCtrl($scope, $rootScope){
             $scope.languageList[i].short + '.png';
     $scope.languageList[i].url += "/" + $scope.languageList[i].short;
   }
-  console.log($scope.languageList);
   $scope.description = function(lang){
-    console.log("Lang:" + lang);
     switch(lang.toLowerCase())
     {
       case "vi":

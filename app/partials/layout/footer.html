@@ -3,7 +3,7 @@
 <div class="mainFooter" ng-controller="MainFooterCtrl">
   <ul>
     <li ng-repeat="item in data.menus.footer_menu">
-      <a href="{{item.url}}"><small>{{item.name}}</small></a>
+      <a href="{{item.url}}"><small>{{i18n(item.name)}}</small></a>
     </li>
   </ul>
 </div>
@@ -11,5 +11,5 @@
 <hr class="bottom">
 
 <div class="copyright">
-  Copyright ©2013-2013 by <a href="http://www.techpropulsionlabs.com"> TechPropulsionLabs </a>
+  {{i18n('copyright')}} <a href="{{hostlink()}}" target="_blank"> {{hostname()}} </a>
 </div>

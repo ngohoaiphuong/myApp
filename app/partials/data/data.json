@@ -9,14 +9,16 @@
     "default":{
       "img":"assets/img/languages/", 
       "lang":"en",
-      "username":""
+      "username":"",
+      "hostlink": "http://www.techpropulsionlabs.com",
+      "hostname": "TechPropulsionLabs"
     }
   },
   "menus":{
     "top_menu":{
       "account":[
-        {"name":"Log In", "url":"#/login"},
-        {"name":"Help", "url":"#/help"}
+        {"name":"login", "url":"#/login"},
+        {"name":"help", "url":"#/help"}
       ],
       "language":[
         {"name":"Vietnamese", "short":"vi", "url":"#/switch"},
@@ -24,15 +26,15 @@
       ]
     },
     "main_menu":[
-      {"name":"Home", "url":"#/home"}, 
-      {"name":"Tutorial", "url":"#/tutorial"}, 
-      {"name":"Events", "url":"#/events"},
-      {"name":"Projects", "url":"#/projects"}
+      {"name":"home", "url":"#/home"}, 
+      {"name":"tutorial", "url":"#/tutorial"}, 
+      {"name":"events", "url":"#/events"},
+      {"name":"projects", "url":"#/projects"}
     ],
     "footer_menu":[
-      {"name":"About", "url":"#/about"}, 
-      {"name":"Contact", "url":"#/contact"},
-      {"name":"Wikis", "url":"#/wikis"}
+      {"name":"about", "url":"#/about"}, 
+      {"name":"contact", "url":"#/contact"},
+      {"name":"wikis", "url":"#/wikis"}
     ]
   },
   "templates":{

@@ -4,17 +4,7 @@
 
 var myApp = angular.module('myApp', ['ui.bootstrap', 'ngCookies', 'ui']);
 
-myApp.run(function($rootScope, $location, $route, $dialog, $http){
-  $http.get('partials/data/data.json').success(function(data) {
-    $rootScope.username = data.options.username;
-    
-    $rootScope.footer = data.templates.footer;
-    $rootScope.header = data.templates.header;
-    $rootScope.welcome= data.templates.welcome;
-    
-    $rootScope.data = data;
-  });
-
+myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){
   $rootScope.root = window.location.href;
   $rootScope.root = $rootScope.root.replace(/(\#\/)+/, '');
   $rootScope.root = $rootScope.root.replace(/[^\/]+$/, '');
@@ -23,6 +13,21 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http){
   $rootScope.route = $route;
   $rootScope.dialog = $dialog;
 
+  $http.get('partials/data/data.json').success(function(data) {
+    $rootScope.username = data.options.username;
+    
+    $rootScope.footer = data.templates.footer;
+    $rootScope.header = data.templates.header;
+    $rootScope.welcome= data.templates.welcome;
+    
+    $rootScope.data = data;
+    $rootScope.lang = {};
+    // $rootScope.lang = i18n.setLang($rootScope.data.options.default.lang);
+    i18n.setLang($rootScope.data.options.default.lang).then(function(d){
+      $rootScope.lang = d;
+    });
+  });
+
   $rootScope.callFunction = function($options){
     if($options.name == "Log In"){
       openDialogLogin(this, 'partials/template/login.html');
@@ -30,14 +35,24 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http){
   };
 
   $rootScope.Switch = function(language){
-    console.log(language);
     $rootScope.data.options.default.lang = language.short;
     var text = $('#language').text();
-    console.log("[" + text + "]");
     $('#language').text(language.name);
+    i18n.setLang(language.short).then(function(d){
+      $rootScope.lang = d;
+    });
   }
 
-  $rootScope.goHome = function(){
+  $rootScope.i18n = function(key){
+    return $rootScope.lang[key];
+  }
+
+  $rootScope.hostlink = function(){
+    return $rootScope.data.options.default.hostlink;
+  }
+
+  $rootScope.hostname = function(){
+    return $rootScope.data.options.default.hostname;
   }
 });
 
