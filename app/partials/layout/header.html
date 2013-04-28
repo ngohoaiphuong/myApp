@@ -30,7 +30,7 @@
 
 <div class="mainHeader">
   <div class="logoContainer">
-    <a href="#/">
+    <a href="#/?lang={{currentLanguage()}}">
       <div class="logo">
       </div>
     </a>
@@ -39,7 +39,7 @@
   <div class="mainMenu" ng-controller="MainMenuCtrl">
     <ul class="nav nav-pills">
       <li ng-repeat="item in data.menus.main_menu" ng-class="navClass(item)">
-        <a href="{{item.url}}">{{i18n(item.name)}}</a>
+        <a href="{{item.url}}?lang={{currentLanguage()}}">{{i18n(item.name)}}</a>
       </li>
     </ul>
   </div>

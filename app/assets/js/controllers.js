@@ -3,14 +3,17 @@
 var language = 'vi';
 
 /* Controllers */
-function HomeCtrl($scope, $rootScope){
+function HomeCtrl($scope, $rootScope, $route, $routeParams){
+  console.log($routeParams);
+  console.log($route);
+  console.log($route.current.templateUrl);
   $scope.yourName = '';
   // i18n.setLang($rootScope.data.options.default.lang).then(function(d){
   //   $rootScope.lang = d;
   // });
 }
 
-function MainMenuCtrl($scope, $rootScope){
+function MainMenuCtrl($scope, $rootScope, $routeParams){
   $scope.navClass = function(page){
     var currentRoute = $rootScope.location.path();
     currentRoute = currentRoute.replace(/\//, '');
@@ -18,7 +21,7 @@ function MainMenuCtrl($scope, $rootScope){
   }
 }
 
-function MainOptionsCtrl($scope, $rootScope){
+function MainOptionsCtrl($scope, $rootScope, $routeParams){
   $scope.accountList = $rootScope.data.menus.top_menu.account;
   $scope.languageList = $rootScope.data.menus.top_menu.language;
   for(var i=0; i<$scope.languageList.length; i++){
@@ -41,10 +44,10 @@ function MainOptionsCtrl($scope, $rootScope){
   }
 }
 
-function MainFooterCtrl($scope, $rootScope){
+function MainFooterCtrl($scope, $rootScope, $routeParams){
 }
 
-function AboutCtrl($scope, $rootScope){
+function AboutCtrl($scope, $rootScope, $routeParams){
   var lat = 10.796865;
   var lng = 106.66486;
   var enabled = false;
@@ -81,25 +84,25 @@ function AboutCtrl($scope, $rootScope){
   };
 }
 
-function EventsCtrl($scope, $rootScope){
+function EventsCtrl($scope, $rootScope, $routeParams){
 
 }
 
-function TutorialCtrl($scope, $dialog, $rootScope){
+function TutorialCtrl($scope, $dialog, $rootScope, $routeParams){
 }
 
 // the dialog is injected in the specified controller
-function DialogController($scope, dialog){
+function DialogController($scope, dialog, $routeParams){
   $scope.close = function(result){
     dialog.close(result);
   };
 }
 
-function GlobalCtrl($scope, $rootScope){
+function GlobalCtrl($scope, $rootScope, $routeParams){
   $scope.data_ = {imgLanguage:'img/languages', language:'vi'};
 }
 
-function LoginCtrl($scope, $dialog, $rootScope){
+function LoginCtrl($scope, $dialog, $rootScope, $routeParams){
   $scope.opts = $rootScope.data.options.dialog;
   $scope.opts.templateUrl = 'partials/login.html';
   $scope.login = function(){

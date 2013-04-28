@@ -54,6 +54,10 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){
   $rootScope.hostname = function(){
     return $rootScope.data.options.default.hostname;
   }
+
+  $rootScope.currentLanguage = function(){
+    return i18n.getLang();
+  }
 });
 
 myApp.config(['$locationProvider', function($location) {
@@ -62,18 +66,18 @@ myApp.config(['$locationProvider', function($location) {
 
 myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', 
   function($routeProvider, $locationProvider, $httpProvider) {
-  $routeProvider.
-    when('/home', {templateUrl: 'partials/template/home.html',   controller: HomeCtrl}).
-    when('/about', {templateUrl: 'partials/template/about.html',   controller: AboutCtrl}).
-    when('/tutorial', {templateUrl: 'partials/template/tutorial.html',   controller: TutorialCtrl}).
-    when('/events', {templateUrl: 'partials/template/events.html',   controller: EventsCtrl}).
-    // when('/login', {templateUrl: 'partials/login.html',   controller: LoginCtrl}).
-    when('/login', {templateUrl: 'auth/login.html',   controller: LoginCtrl}).
-    when('/projects', {templateUrl: 'partials/template/projects.html',   controller: LoginCtrl}).
-    when('/contact', {templateUrl: 'partials/template/contact.html',   controller: LoginCtrl}).
-    when('/wikis', {templateUrl: 'partials/template/wikis.html',   controller: LoginCtrl}).
-    when('/', {templateUrl: 'partials/welcome.html', controller: HomeCtrl}).
-    otherwise({redirectTo: '/'});
-  $locationProvider.html5Mode(false);
+    $routeProvider.
+      when('/home', {templateUrl: 'partials/template/home.html',   controller: HomeCtrl}).
+      when('/about', {templateUrl: 'partials/template/about.html',   controller: AboutCtrl}).
+      when('/tutorial', {templateUrl: 'partials/template/tutorial.html',   controller: TutorialCtrl}).
+      when('/events', {templateUrl: 'partials/template/events.html',   controller: EventsCtrl}).
+      // when('/login', {templateUrl: 'partials/login.html',   controller: LoginCtrl}).
+      when('/login', {templateUrl: 'auth/login.html',   controller: LoginCtrl}).
+      when('/projects', {templateUrl: 'partials/template/projects.html',   controller: LoginCtrl}).
+      when('/contact', {templateUrl: 'partials/template/contact.html',   controller: LoginCtrl}).
+      when('/wikis', {templateUrl: 'partials/template/wikis.html',   controller: LoginCtrl}).
+      when('/', {templateUrl: 'partials/welcome.html', controller: HomeCtrl}).
+      otherwise({redirectTo: '/'});
+    $locationProvider.html5Mode(false);
 }]);
 
