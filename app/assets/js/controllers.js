@@ -18,6 +18,7 @@ function MainOptionsCtrl($scope, $rootScope, $routeParams){
   $scope.languageList = $rootScope.data.menus.top_menu.language;
 
   for(var i=0; i<$scope.languageList.length; i++){
+    $scope.languageList[i].name = $scope.languageList[i].name.toProperCase();
     $scope.languageList[i].path = $rootScope.data.options.default.img + 
             $scope.languageList[i].short + '.png';
     $scope.languageList[i].url += "/" + $scope.languageList[i].short;
@@ -26,7 +27,7 @@ function MainOptionsCtrl($scope, $rootScope, $routeParams){
   $scope.description = function(lang){
     for(var i=0; i<$scope.languageList.length; i++){
       if($scope.languageList[i].short == lang.toLowerCase()){
-        return $scope.languageList[i].name.toProperCase();
+        return $scope.languageList[i].name;
       }
     }
     return "Language";
