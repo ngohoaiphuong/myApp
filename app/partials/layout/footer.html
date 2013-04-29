@@ -3,7 +3,7 @@
 <div class="mainFooter" ng-controller="MainFooterCtrl">
   <ul>
     <li ng-repeat="item in data.menus.footer_menu">
-      <a href="{{item.url}}"><small>{{i18n(item.name)}}</small></a>
+      <a href="{{item.url}}?lang={{currentLanguage()}}"><small>{{i18n(item.name)}}</small></a>
     </li>
   </ul>
 </div>
