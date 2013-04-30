@@ -1,4 +1,4 @@
-{
+var myAppData = {
   "options":{
     "dialog":{
       "backdrop": true,
@@ -59,4 +59,13 @@
     "tutorial":"partials/template/tutorial.html",
     "welcome":"partials/welcome.html"
   }
-}
+};
+
+myAppData.generateURL = function(lang, name){
+  if(!lang){
+    lang = 'en';
+  }
+
+  var url = this.options.default.url + lang + name + '.html';
+  return url;
+};

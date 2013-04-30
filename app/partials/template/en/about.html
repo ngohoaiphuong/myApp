@@ -20,6 +20,7 @@
         ui-event="{'map-click': 'addMarker($event)', 'map-zoom_changed': 'setZoomMessage(myMap.getZoom())' }"
         ui-options="mapOptions">
       </div>
+      {{myMarkers.length}}
       <div ng-repeat="marker in myMarkers" ui-map-marker="myMarkers[$index]">
       </div>
     </div>

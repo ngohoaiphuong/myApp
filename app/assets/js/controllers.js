@@ -3,16 +3,9 @@
 /* Controllers */
 function HomeCtrl($scope, $rootScope, $route, $routeParams){
   $scope.yourName = '';
-  // $scope.yourName = $rootScope.currentLanguage();
-  var lang = 'en';
-  if($routeParams['lang']){
-    lang = $routeParams['lang'];
-  }
-  var url = 'partials/template/' + lang + '/home.html'; 
+  var url = $rootScope.data.generateURL($routeParams['lang'], '/home');
   $scope.templateUrl = url;
 }
-
-// HomeCtrl.$inject = ['$scope', '$rootScope', '$route', '$routeParams', 'URLService'];
 
 function MainMenuCtrl($scope, $rootScope, $routeParams){
   $scope.navClass = function(page){
@@ -47,20 +40,17 @@ function MainFooterCtrl($scope, $rootScope, $routeParams){
 }
 
 function AboutCtrl($scope, $rootScope, $routeParams){
-  var lang = 'en';
-  if($routeParams['lang']){
-    lang = $routeParams['lang'];
-  }
-  var url = 'partials/template/' + lang + '/about.html'; 
+  var url = $rootScope.data.generateURL($routeParams['lang'], '/about');
   $scope.templateUrl = url;
 
-  var lat = $rootScope.data.options.map.lat;
-  var lng = $rootScope.data.options.map.lng;
+  var lat, lng;
+  lat = $rootScope.data.options.map.lat;
+  lng = $rootScope.data.options.map.lng;
   var ll = new google.maps.LatLng(lat, lng);
 
   $scope.mapOptions = {
     center: ll,
-    zoom: 16,
+    zoom: $rootScope.data.options.map.zoom,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     zoomControl: $rootScope.data.options.map.zoomControl,
     panControl: $rootScope.data.options.map.panControl,
@@ -91,20 +81,12 @@ function AboutCtrl($scope, $rootScope, $routeParams){
 }
 
 function EventsCtrl($scope, $rootScope, $routeParams){
-  var lang = 'en';
-  if($routeParams['lang']){
-    lang = $routeParams['lang'];
-  }
-  var url = 'partials/template/' + lang + '/events.html'; 
+  var url = $rootScope.data.generateURL($routeParams['lang'], '/events');
   $scope.templateUrl = url;
 }
 
 function TutorialCtrl($scope, $dialog, $rootScope, $routeParams){
-  var lang = 'en';
-  if($routeParams['lang']){
-    lang = $routeParams['lang'];
-  }
-  var url = 'partials/template/' + lang + '/tutorial.html'; 
+  var url = $rootScope.data.generateURL($routeParams['lang'], '/tutorial');
   $scope.templateUrl = url;
 }
 
@@ -117,29 +99,17 @@ function LoginCtrl($scope, $dialog, $rootScope, $routeParams){
 }
 
 function ProjectsCtrl($scope, $dialog, $rootScope, $routeParams){
-  var lang = 'en';
-  if($routeParams['lang']){
-    lang = $routeParams['lang'];
-  }
-  var url = 'partials/template/' + lang + '/projects.html'; 
+  var url = $rootScope.data.generateURL($routeParams['lang'], '/projects');
   $scope.templateUrl = url;
 }
 
 function ContactCtrl($scope, $dialog, $rootScope, $routeParams){
-  var lang = 'en';
-  if($routeParams['lang']){
-    lang = $routeParams['lang'];
-  }
-  var url = 'partials/template/' + lang + '/contact.html'; 
+  var url = $rootScope.data.generateURL($routeParams['lang'], '/contact');
   $scope.templateUrl = url;
 }
 
 function WikisCtrl($scope, $dialog, $rootScope, $routeParams){
-  var lang = 'en';
-  if($routeParams['lang']){
-    lang = $routeParams['lang'];
-  }
-  var url = 'partials/template/' + lang + '/wikis.html'; 
+  var url = $rootScope.data.generateURL($routeParams['lang'], '/wikis');
   $scope.templateUrl = url;
 }
 
@@ -150,10 +120,6 @@ function DialogController($scope, dialog, $routeParams){
     dialog.close(result);
   };
 }
-
-// function GlobalCtrl($scope, $rootScope, $routeParams){
-//   $scope.data_ = {imgLanguage:'img/languages', language:'vi'};
-// }
 
 function openDialogLogin($rootScope, $template){
   $rootScope.data.options.dialog.templateUrl = $template;

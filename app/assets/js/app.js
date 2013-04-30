@@ -3,15 +3,6 @@
 /* App Module */
 var myApp = angular.module('myApp', ['ui.bootstrap', 'ngCookies', 'ui']);
 
-// myApp.factory('URLService', function($rootScope){
-//   var shareService = {};
-
-//   shareService.generateURL = function(lang, htmlName){
-//     console.log($rootScope);
-//   }
-//   return shareService;
-// });
-
 myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){
   $rootScope.root = window.location.href;
   $rootScope.root = $rootScope.root.replace(/(\#\/)+/, '');
@@ -21,19 +12,33 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){
   $rootScope.route = $route;
   $rootScope.dialog = $dialog;
 
-  $http.get('partials/data/data.json').success(function(data) {
-    $rootScope.username = data.options.username;
+  // $http.get('partials/data/data.json').success(function(data) {
+  //   $rootScope.username = data.options.username;
     
-    $rootScope.footer = data.templates.footer;
-    $rootScope.header = data.templates.header;
-    $rootScope.welcome= data.templates.welcome;
+  //   $rootScope.footer = data.templates.footer;
+  //   $rootScope.header = data.templates.header;
+  //   $rootScope.welcome= data.templates.welcome;
     
-    $rootScope.data = data;
-    $rootScope.lang = {};
-    // $rootScope.lang = i18n.setLang($rootScope.data.options.default.lang);
-    i18n.setLang($rootScope.data.options.default.lang).then(function(d){
-      $rootScope.lang = d;
-    });
+  //   $rootScope.data = data;
+  //   $rootScope.lang = {};
+  //   // $rootScope.lang = i18n.setLang($rootScope.data.options.default.lang);
+  //   i18n.setLang($rootScope.data.options.default.lang).then(function(d){
+  //     $rootScope.lang = d;
+  //   });
+  // });
+
+  $rootScope.username = myAppData.options.username;
+  
+  $rootScope.footer = myAppData.templates.footer;
+  $rootScope.header = myAppData.templates.header;
+  $rootScope.welcome= myAppData.templates.welcome;
+
+  $rootScope.lang = {};
+
+  $rootScope.data = myAppData;
+
+  i18n.setLang($rootScope.data.options.default.lang).then(function(d){
+    $rootScope.lang = d;
   });
 
   $rootScope.callFunction = function($options){
@@ -49,8 +54,13 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){
     i18n.setLang(language.short).then(function(d){
       $rootScope.lang = d;
       var href = window.location.href;
-      href = href.replace(/\=.*$/, '');
-      href+= '=' + language.short;
+
+      if(href.match(/\?lang\=.*$/)){
+        href = href.replace(/\?lang\=.*$/, '');
+        // href+= '=' + language.short;
+      }
+      href+= '?lang=' + language.short;
+
       window.location.href = href;
     });
   }
@@ -81,21 +91,22 @@ myApp.config(['$locationProvider', function($location) {
     // $location.html5Mode(true); //now there won't be a hashbang within URLs for browers that support HTML5 history
   }]);
 
-myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', 
+myApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
   function($routeProvider, $locationProvider, $httpProvider) {
     var loading = '<div ng-include="templateUrl"><div class="loading">Loading...</div></div>';
-    // $routeProvider.
-    //   when('/home', {templateUrl: 'partials/template/home.html',   controller: HomeCtrl}).
-    //   when('/about', {templateUrl: 'partials/template/about.html',   controller: AboutCtrl}).
-    //   when('/tutorial', {templateUrl: 'partials/template/tutorial.html',   controller: TutorialCtrl}).
-    //   when('/events', {templateUrl: 'partials/template/events.html',   controller: EventsCtrl}).
-    //   // when('/login', {templateUrl: 'partials/login.html',   controller: LoginCtrl}).
-    //   when('/login', {templateUrl: 'auth/login.html',   controller: LoginCtrl}).
-    //   when('/projects', {templateUrl: 'partials/template/projects.html',   controller: LoginCtrl}).
-    //   when('/contact', {templateUrl: 'partials/template/contact.html',   controller: LoginCtrl}).
-    //   when('/wikis', {templateUrl: 'partials/template/wikis.html',   controller: LoginCtrl}).
-    //   // when('/', {templateUrl: 'partials/welcome.html', controller: HomeCtrl}).
-    //   otherwise({redirectTo: '/'});
+
+    // $.getJSON('partials/data/route.json', function(route) {
+    //   for(var i=0; i<route.length; i++){
+    //     $routeProvider.when(route[i].when,{
+    //       controller: route[i].controller,
+    //       template: loading
+    //     });  
+    //   }
+
+    //   $routeProvider.otherwise({redirectTo: '/'});
+
+    //   $locationProvider.html5Mode(false);
+    // });
 
     var route = [
       {"when":"/", "controller":HomeCtrl },
@@ -116,10 +127,6 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
     }
 
     $routeProvider.otherwise({redirectTo: '/'});
-    // $routeProvider.when('/', {
-    //   controller: HomeCtrl,
-    //   template: loading
-    // });
 
     $locationProvider.html5Mode(false);
 }]);
