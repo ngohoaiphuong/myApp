@@ -19,8 +19,12 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){
   $rootScope.welcome= myAppData.templates.welcome;
 
   $rootScope.lang = {};
-
   $rootScope.data = myAppData;
+
+  var arrMatch = window.location.href.match(/\?lang\=.*$/); 
+  if(arrMatch){
+    $rootScope.data.options.default.lang = arrMatch[0].replace(/\?lang\=/, '');
+  }
 
   i18n.setLang($rootScope.data.options.default.lang).then(function(d){
     $rootScope.lang = d;
@@ -70,6 +74,11 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){
   }
 });
 
+myApp.config(['$locationProvider', function($location) {
+    // $location.html5Mode(true).hashPrefix('!');
+    $location.html5Mode(false);
+}]);
+
 myApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
   function($routeProvider, $locationProvider, $httpProvider) {
     var loading = '<div ng-include="templateUrl"><div class="loading">Loading...</div></div>';
@@ -114,7 +123,5 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
     }
 
     $routeProvider.otherwise({redirectTo: '/'});
-
-    $locationProvider.html5Mode(false);
 }]);
 
