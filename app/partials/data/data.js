@@ -22,7 +22,8 @@ var myAppData = {
       "panControl": false,
       "draggable": false,
       "mapMaker": true,
-      "scrollwheel": false
+      "scrollwheel": false,
+      "disableDblZoom": true
     }
   },
   "menus":{

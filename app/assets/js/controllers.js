@@ -56,12 +56,9 @@ function AboutCtrl($scope, $rootScope, $routeParams){
     panControl: $rootScope.data.options.map.panControl,
     draggable: $rootScope.data.options.map.draggable,
     mapMaker: $rootScope.data.options.map.mapMaker,
-    scrollwheel: $rootScope.data.options.map.scrollwheel
+    scrollwheel: $rootScope.data.options.map.scrollwheel,
+    disableDoubleClickZoom: $rootScope.data.options.map.disableDblZoom
   };
-
-  $scope.events = {
-    'map-click': 'addMarker($event)'
-  }
 
   var marker = new google.maps.Marker({
     map: $scope.myMap,
@@ -73,10 +70,14 @@ function AboutCtrl($scope, $rootScope, $routeParams){
 
   $scope.addMarker = function($event) {
     alert('alert');
+    $scope.myMarkers.push(new google.maps.Marker({
+      map: $scope.myMap,
+      position: $event.latLng
+    }));
   };
 
   $scope.setZoomMessage = function(zoom) {
-    console.log(zoom,'zoomed')
+    console.log('zoomed:' + zoom);
   };
 }
 
