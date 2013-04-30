@@ -61,6 +61,17 @@ var myAppData = {
   }
 };
 
+myAppData.route = [
+  { "when":"/", "controller":"HomeCtrl" },
+  { "when":"/about", "controller":"AboutCtrl" },
+  { "when":"/tutorial", "controller":"TutorialCtrl" },
+  { "when":"/events", "controller":"EventsCtrl" },
+  { "when":"/login", "controller":"LoginCtrl" },
+  { "when":"/projects", "controller":"ProjectsCtrl" },
+  { "when":"/contact", "controller":"ContactCtrl" },
+  { "when":"/wikis", "controller":"WikisCtrl" }
+];
+
 myAppData.generateURL = function(lang, name){
   if(!lang){
     lang = 'en';

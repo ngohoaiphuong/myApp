@@ -12,21 +12,6 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){
   $rootScope.route = $route;
   $rootScope.dialog = $dialog;
 
-  // $http.get('partials/data/data.json').success(function(data) {
-  //   $rootScope.username = data.options.username;
-    
-  //   $rootScope.footer = data.templates.footer;
-  //   $rootScope.header = data.templates.header;
-  //   $rootScope.welcome= data.templates.welcome;
-    
-  //   $rootScope.data = data;
-  //   $rootScope.lang = {};
-  //   // $rootScope.lang = i18n.setLang($rootScope.data.options.default.lang);
-  //   i18n.setLang($rootScope.data.options.default.lang).then(function(d){
-  //     $rootScope.lang = d;
-  //   });
-  // });
-
   $rootScope.username = myAppData.options.username;
   
   $rootScope.footer = myAppData.templates.footer;
@@ -57,7 +42,6 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){
 
       if(href.match(/\?lang\=.*$/)){
         href = href.replace(/\?lang\=.*$/, '');
-        // href+= '=' + language.short;
       }
       href+= '?lang=' + language.short;
 
@@ -79,17 +63,12 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){
 
   $rootScope.currentLanguage = function(){
     return i18n.getLang();
-    // return $rootScope.lang;
   }
 
   $rootScope.url = function(){
     return $rootScope.data.options.default.url;
   }
 });
-
-myApp.config(['$locationProvider', function($location) {
-    // $location.html5Mode(true); //now there won't be a hashbang within URLs for browers that support HTML5 history
-  }]);
 
 myApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
   function($routeProvider, $locationProvider, $httpProvider) {
@@ -108,17 +87,25 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
     //   $locationProvider.html5Mode(false);
     // });
 
-    var route = [
-      {"when":"/", "controller":HomeCtrl },
-      {"when":"/about", "controller":AboutCtrl },
-      {"when":"/tutorial", "controller":TutorialCtrl },
-      {"when":"/events", "controller":EventsCtrl },
-      {"when":"/login", "controller":LoginCtrl },
-      {"when":"/projects", "controller":ProjectsCtrl },
-      {"when":"/contact", "controller":ContactCtrl },
-      {"when":"/wikis", "controller":WikisCtrl }
-    ]
+    // var route = [
+    //   {"when":"/", "controller":HomeCtrl },
+    //   {"when":"/about", "controller":AboutCtrl },
+    //   {"when":"/tutorial", "controller":TutorialCtrl },
+    //   {"when":"/events", "controller":EventsCtrl },
+    //   {"when":"/login", "controller":LoginCtrl },
+    //   {"when":"/projects", "controller":ProjectsCtrl },
+    //   {"when":"/contact", "controller":ContactCtrl },
+    //   {"when":"/wikis", "controller":WikisCtrl }
+    // ]
 
+    // for(var i=0; i<route.length; i++){
+    //   $routeProvider.when(route[i].when,{
+    //     controller: route[i].controller,
+    //     template: loading
+    //   });  
+    // }
+
+    var route = myAppData.route;
     for(var i=0; i<route.length; i++){
       $routeProvider.when(route[i].when,{
         controller: route[i].controller,
