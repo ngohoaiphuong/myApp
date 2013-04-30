@@ -31,10 +31,12 @@ body {
   font-size: 1em;
   background-color: #333;
   width: 97.8%;
-  height: 100px;
+  height: 150px;
   color: white;
   padding-left: 1%;
   padding-right: 1%;
+  position: relative;
+  top: -30px;
 }
 
 .mainFooter ul{
@@ -58,7 +60,7 @@ body {
   /*margin-left: 10px;*/
   padding-left: 1%;
   padding-right: 1%;
-  height: 550px;
+  /*height: 550px;*/
 }
 
 .MainOauth{
@@ -80,13 +82,6 @@ body {
   margin-left: 5px;
   margin-right: 5px;
   cursor: pointer;
-
-/*  padding:0 7px;
-
-  border-left-color:#999999;
-  border-left-style:solid;
-  border-left-width:1px;
-*/
 }
 
 .MainOauth li a{
@@ -114,12 +109,12 @@ body {
 
 .bottom{
   position: relative;
-  top: -10px;
+  top: -40px;
 }
 
 .copyright{
   position: relative;
-  top: -25px;
+  top: -55px;
   text-align: center;
   text-decoration: none;
 }
@@ -154,4 +149,42 @@ body {
               url('../img/FhHRx.gif') 
               50% 50% 
               no-repeat;
+}
+
+.mainContentLeft{
+  border: 1px solid gray;
+  background-color: #B1B3B2;
+  width: 25%;
+}
+
+.mainContentRight{
+  border: 1px solid gray;
+  background-color: #B1B3B2;
+  width: 25%;
+}
+
+.mainContentCenter{
+  border: 1px solid gray;
+  background-color: #A8ABA4;
+  /*background-color: #8FA7B8;*/
+  width: 50%;
+  position: relative;
+  margin-left: 25%;
+  top: -15px;
+}
+
+.mainContentCenter h1{
+  position: relative;
+  top: 8px;
+  text-align: left;
+  text-indent: 10px;
+}
+
+.firstLine{
+  text-indent: 15px;
+}
+
+.LRSpace{
+  margin-left: 5px;
+  margin-right: 5px;
 }
