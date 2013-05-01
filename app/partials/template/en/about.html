@@ -1,9 +1,10 @@
-<div>
-  <h1>About</h1>
-  <hr>
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span2">
+<section id="directives-map">
+  <div class="page-header">
+    <h1>About</h1>
+  </div>
+  <div class="well">
+    <div class="row">
+      <div class="span3">
         <address>
           <strong>TechPropulsionLabs Company.</strong><br>
           316 Lê Văn Sỹ, Ward 1<br>
@@ -16,14 +17,10 @@
           <a href="mailto:#">phuong.ngo@techpropulsionlabs.com</a>
         </address>
       </div>
-      <div class="span10">
-        <div id="map_canvas" ui-map="myMap1" class="map" 
-          ui-event="{'map-click': 'addMarker($event)', 'map-zoom_changed': 'setZoomMessage(myMap.getZoom())'}" ui-options="mapOptions">
-        </div>
-        <div ng-repeat="marker in myMarkers" ui-map-marker="myMarkers[0]">
-        </div>
+      <div id="map_canvas" ui-map="myMap" class="span8 map"
+        ui-event="{'map-click': 'addMarker($event)', 'map-zoom_changed': 'setZoomMessage(myMap.getZoom())' }"
+        ui-options="mapOptions">
       </div>
     </div>
   </div>
-  <br>
-</div>
+</section>

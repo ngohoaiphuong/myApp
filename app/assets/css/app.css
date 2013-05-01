@@ -192,3 +192,7 @@ body {
 .firstLine a{
   text-decoration: none;
 }
+
+#directives-map .map {
+  height: 400px;
+}
