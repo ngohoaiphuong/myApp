@@ -23,7 +23,8 @@ var myAppData = {
       "draggable": false,
       "mapMaker": true,
       "scrollwheel": false,
-      "disableDblZoom": true
+      "disableDblZoom": true,
+      "streetViewControl": false
     }
   },
   "menus":{

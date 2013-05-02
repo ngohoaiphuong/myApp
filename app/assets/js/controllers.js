@@ -59,6 +59,7 @@ function ContactCtrl($scope, $rootScope, $routeParams){
     draggable: $rootScope.data.options.map.draggable,
     mapMaker: $rootScope.data.options.map.mapMaker,
     scrollwheel: $rootScope.data.options.map.scrollwheel,
+    streetViewControl: $rootScope.data.options.map.streetViewControl,
     disableDoubleClickZoom: $rootScope.data.options.map.disableDblZoom
   };
 
