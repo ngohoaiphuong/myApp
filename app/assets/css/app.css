@@ -196,3 +196,7 @@ body {
 #directives-map .map {
   height: 400px;
 }
+
+#map-canvas { 
+  height: 100% 
+}

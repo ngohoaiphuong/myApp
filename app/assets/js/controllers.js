@@ -52,12 +52,12 @@ function ContactCtrl($scope, $rootScope, $routeParams){
     center: ll,
     zoom: $rootScope.data.options.map.zoom,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    zoomControl: $rootScope.data.options.map.zoomControl,
-    panControl: $rootScope.data.options.map.panControl,
-    draggable: $rootScope.data.options.map.draggable,
-    mapMaker: $rootScope.data.options.map.mapMaker,
-    scrollwheel: $rootScope.data.options.map.scrollwheel,
-    disableDoubleClickZoom: $rootScope.data.options.map.disableDblZoom
+    // zoomControl: $rootScope.data.options.map.zoomControl,
+    // panControl: $rootScope.data.options.map.panControl,
+    // draggable: $rootScope.data.options.map.draggable,
+    // mapMaker: $rootScope.data.options.map.mapMaker,
+    // scrollwheel: $rootScope.data.options.map.scrollwheel,
+    // disableDoubleClickZoom: $rootScope.data.options.map.disableDblZoom
   };
 
   var marker = new google.maps.Marker({
@@ -66,14 +66,15 @@ function ContactCtrl($scope, $rootScope, $routeParams){
   });
 
   $scope.myMarkers = [];
-  $scope.myMarkers = [marker];
+  // $scope.myMarkers = [marker];
 
   $scope.addMarker = function($event) {
-    alert('alert');
+    console.log('Length:' + $scope.myMarkers.length);
     $scope.myMarkers.push(new google.maps.Marker({
       map: $scope.myMap,
       position: $event.latLng
     }));
+    console.log($event.latLng);
   };
 
   $scope.setZoomMessage = function(zoom) {
@@ -83,6 +84,7 @@ function ContactCtrl($scope, $rootScope, $routeParams){
   $scope.setMarkerPosition = function(marker, lat, lng) {
     marker.setPosition(new google.maps.LatLng(lat, lng));
   };
+
 }
 
 function EventsCtrl($scope, $rootScope, $routeParams){
