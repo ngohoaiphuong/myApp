@@ -39,8 +39,8 @@ function MainOptionsCtrl($scope, $rootScope, $routeParams){
 function MainFooterCtrl($scope, $rootScope, $routeParams){
 }
 
-function AboutCtrl($scope, $rootScope, $routeParams){
-  var url = $rootScope.data.generateURL($routeParams['lang'], '/about');
+function ContactCtrl($scope, $rootScope, $routeParams){
+  var url = $rootScope.data.generateURL($routeParams['lang'], '/contact');
   $scope.templateUrl = url;
 
   var lat, lng;
@@ -79,6 +79,10 @@ function AboutCtrl($scope, $rootScope, $routeParams){
   $scope.setZoomMessage = function(zoom) {
     console.log('zoomed:' + zoom);
   };
+
+  $scope.setMarkerPosition = function(marker, lat, lng) {
+    marker.setPosition(new google.maps.LatLng(lat, lng));
+  };
 }
 
 function EventsCtrl($scope, $rootScope, $routeParams){
@@ -104,8 +108,8 @@ function ProjectsCtrl($scope, $dialog, $rootScope, $routeParams){
   $scope.templateUrl = url;
 }
 
-function ContactCtrl($scope, $dialog, $rootScope, $routeParams){
-  var url = $rootScope.data.generateURL($routeParams['lang'], '/contact');
+function AboutCtrl($scope, $dialog, $rootScope, $routeParams){
+  var url = $rootScope.data.generateURL($routeParams['lang'], '/about');
   $scope.templateUrl = url;
 }
 
