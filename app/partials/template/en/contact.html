@@ -17,12 +17,25 @@
           <a href="mailto:#">phuong.ngo@techpropulsionlabs.com</a>
         </address>
       </div>
-      <div id="map_canvas" ui-map="myMap" class="span8 map"
-        ui-event="{'map-click': 'addMarker($event)', 'map-zoom_changed': 'setZoomMessage(myMap.getZoom())' }"
+
+      <div id="map_canvas" ui-map="model.myMap" class="span8 map"
+        ui-event="{'map-click': 'addMarker($event)', 'map-idle' : 'onMapIdle()', 'map-zoom_changed': 'setZoomMessage(myMap.getZoom())' }"
         ui-options="mapOptions">
       </div>
-      <div ng-repeat="marker in myMarkers" ui-map-marker="myMarkers[$index]">
+
+      <div ng-repeat="marker in myMarkers" ui-map-marker="myMarkers[$index]" 
+        ui-event="{'map-click': 'openMarkerInfo(marker)'}">
       </div>
+
+      <div ui-map-info-window="model.myInfoWindow">
+        <address>
+          <strong>TechPropulsionLabs Company.</strong><br>
+          316 Lê Văn Sỹ, Ward 1<br>
+          District Tân Bình, Hồ Chí Minh, City<br>
+          <abbr title="Phone">P:</abbr> (+84) 90 88 99 470
+        </address>
+      </div>      
+
     </div>
   </div>
 </section>

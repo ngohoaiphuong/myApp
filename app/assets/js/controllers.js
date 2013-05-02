@@ -43,6 +43,8 @@ function ContactCtrl($scope, $rootScope, $routeParams){
   var url = $rootScope.data.generateURL($routeParams['lang'], '/contact');
   $scope.templateUrl = url;
 
+  $scope.model = { myMap: undefined, myInfoWindow: undefined };
+
   var lat, lng;
   lat = $rootScope.data.options.map.lat;
   lng = $rootScope.data.options.map.lng;
@@ -52,39 +54,31 @@ function ContactCtrl($scope, $rootScope, $routeParams){
     center: ll,
     zoom: $rootScope.data.options.map.zoom,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    // zoomControl: $rootScope.data.options.map.zoomControl,
-    // panControl: $rootScope.data.options.map.panControl,
-    // draggable: $rootScope.data.options.map.draggable,
-    // mapMaker: $rootScope.data.options.map.mapMaker,
-    // scrollwheel: $rootScope.data.options.map.scrollwheel,
-    // disableDoubleClickZoom: $rootScope.data.options.map.disableDblZoom
+    zoomControl: $rootScope.data.options.map.zoomControl,
+    panControl: $rootScope.data.options.map.panControl,
+    draggable: $rootScope.data.options.map.draggable,
+    mapMaker: $rootScope.data.options.map.mapMaker,
+    scrollwheel: $rootScope.data.options.map.scrollwheel,
+    disableDoubleClickZoom: $rootScope.data.options.map.disableDblZoom
   };
-
-  var marker = new google.maps.Marker({
-    map: $scope.myMap,
-    position: ll
-  });
 
   $scope.myMarkers = [];
-  // $scope.myMarkers = [marker];
 
-  $scope.addMarker = function($event) {
-    console.log('Length:' + $scope.myMarkers.length);
-    $scope.myMarkers.push(new google.maps.Marker({
-      map: $scope.myMap,
-      position: $event.latLng
-    }));
-    console.log($event.latLng);
+  $scope.onMapIdle = function() {
+    var marker = new google.maps.Marker({
+        map: $scope.model.myMap,
+        position: ll
+    });
+    $scope.myMarkers = [marker, ];
   };
-
-  $scope.setZoomMessage = function(zoom) {
-    console.log('zoomed:' + zoom);
+  
+  $scope.openMarkerInfo = function(marker) {
+    console.log($scope.myInfoWindow);
+    $scope.currentMarker = marker;
+    $scope.currentMarkerLat = marker.getPosition().lat();
+    $scope.currentMarkerLng = marker.getPosition().lng();
+    $scope.model.myInfoWindow.open($scope.model.myMap, marker);
   };
-
-  $scope.setMarkerPosition = function(marker, lat, lng) {
-    marker.setPosition(new google.maps.LatLng(lat, lng));
-  };
-
 }
 
 function EventsCtrl($scope, $rootScope, $routeParams){
