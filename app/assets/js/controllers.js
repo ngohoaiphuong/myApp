@@ -80,6 +80,11 @@ function ContactCtrl($scope, $rootScope, $routeParams){
     $scope.currentMarkerLng = marker.getPosition().lng();
     $scope.model.myInfoWindow.open($scope.model.myMap, marker);
   };
+
+  $scope.notBlackListed = function(value) {
+    var blacklist = ['bad@domain.com','verybad@domain.com'];
+    return blacklist.indexOf(value) === -1;
+  }  
 }
 
 function EventsCtrl($scope, $rootScope, $routeParams){

@@ -1,31 +1,41 @@
-<h1>Liên Lạc</h1>
+<section id="directives-map">
+  <div class="page-header">
+    <h1>Liên Hệ</h1>
+  </div>
+  <div class="well">
+    <div class="row">
+      <div class="span3">
+        <address>
+          <strong>TechPropulsionLabs Company.</strong><br>
+          316 Lê Văn Sỹ, Ward 1<br>
+          Quận Tân Bình, Hồ Chí Minh, City<br>
+          <abbr title="Phone">P:</abbr> (+84) 90 88 99 470
+        </address>
+         
+        <address>
+          <strong>Full Name</strong><br>
+          <a href="mailto:#">phuong.ngo@techpropulsionlabs.com</a>
+        </address>
+      </div>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+      <div id="map_canvas" ui-map="model.myMap" class="span8 map"
+        ui-event="{'map-click': 'addMarker($event)', 'map-idle' : 'onMapIdle()', 'map-zoom_changed': 'setZoomMessage(myMap.getZoom())' }"
+        ui-options="mapOptions">
+      </div>
+
+      <div ng-repeat="marker in myMarkers" ui-map-marker="myMarkers[$index]" 
+        ui-event="{'map-click': 'openMarkerInfo(marker)'}">
+      </div>
+
+      <div ui-map-info-window="model.myInfoWindow">
+        <address>
+          <strong>TechPropulsionLabs Company.</strong><br>
+          316 Lê Văn Sỹ, Ward 1<br>
+          Quận Tân Bình, Hồ Chí Minh, City<br>
+          <abbr title="Phone">P:</abbr> (+84) 90 88 99 470
+        </address>
+      </div>      
+
+    </div>
+  </div>
+</section>

@@ -36,6 +36,15 @@
         </address>
       </div>      
 
+      <div class="span3">
+        <label>Your Name</label>
+        <input name="name" ng-model="name">
+        <label>Email</label>
+        <input name="email" ng-model="email" ui-validate='{blacklist : 'notBlackListed($value)' }'>
+        <label>Content</label>
+        <textarea name="content" ng-model="content" rows=11></textarea>
+        <button type="button" class="btn btn-primary">Send</button>
+      </div>
     </div>
   </div>
 </section>
