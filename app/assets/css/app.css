@@ -151,30 +151,74 @@ body {
               50% 50% 
               no-repeat;
 }
-
+/*
 .mainContentLeft{
   border: 1px solid gray;
   background-color: #B1B3B2;
-  width: 25%;
+  width: 24.5%;
+  position: relative;
+  float: left;
+  top: -15px;
 }
 
 .mainContentRight{
   border: 1px solid gray;
   background-color: #B1B3B2;
-  width: 25%;
+  width: 24.5%;
+  position: relative;
+  float: right;
+  top: -15px;
 }
 
 .mainContentCenter{
-  border: 1px solid gray;
-  background-color: #A8ABA4;
-  /*background-color: #8FA7B8;*/
+  background-color: #f5f5f5;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
   width: 50%;
   position: relative;
   margin-left: 25%;
   top: -15px;
 }
+*/
+.mainContentLeft{
+  position: relative;
+  top: -15px;
+  float: left;
+  width: 24.5%;
 
-.mainContentCenter h1{
+  background-color: #f5f5f5;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mainContentCenter{
+  position: relative;
+  top: -15px;
+  margin-left: 25%;
+  margin-right: 25%;
+
+  background-color: #f5f5f5;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mainContentRight{
+  position: relative;
+  top: -15px;
+  float: right;
+  width: 24.5%;
+
+  background-color: #f5f5f5;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mainContainer{
+  width: 100%;
+}
+
+.mainContainer h1{
   position: relative;
   top: 8px;
   text-align: left;
