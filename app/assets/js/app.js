@@ -17,6 +17,15 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){
   $rootScope.footer = myAppData.templates.footer;
   $rootScope.header = myAppData.templates.header;
   $rootScope.welcome= myAppData.templates.welcome;
+  $rootScope.search = {
+    "filter":undefined
+  };
+
+  $rootScope.contact_detail = {
+    "name": undefined,
+    "email": undefined,
+    "content": undefined
+  };
 
   $rootScope.lang = {};
   $rootScope.data = myAppData;
