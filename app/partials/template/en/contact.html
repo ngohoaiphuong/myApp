@@ -48,15 +48,17 @@
       <!--
         Show form contact with site on right position
       -->
-      <div class="span3">
-        <label>Your Name</label>
-        <input name="name" ng-model="contact_detail.name" placeholder="Your Name">
+      <div class="span4a">
+        <div>
+          <label>Your Name</label>
+          <input name="name" ng-model="contact_detail.name" placeholder="Your Name">
+        </div>
         <label>Email</label>
         <input name="email" ng-model="contact_detail.email" placeholder="Email" 
           ui-validate='{blacklist:notBlackListed($value)}'>
         <label>Content</label>
-        <textarea name="content" ng-model="contact_detail.content" rows="11"></textarea>
-        <button type="button" class="btn btn-primary">Send</button>
+        <textarea name="content" ng-model="contact_detail.content" placeholder="Content"></textarea>
+        <button type="button" class="btn btn-primary" id="sendBtn">Send</button>
       </div>
     </div>
   </div>

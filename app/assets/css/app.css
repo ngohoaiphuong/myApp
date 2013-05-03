@@ -214,3 +214,18 @@ input.search-query {
      -moz-border-radius: 15px;
           border-radius: 15px;
 }
+
+.span4a{
+  width: 330px;
+}
+
+#sendBtn{
+  float: right;
+  width: 100px;
+}
+
+.span4a textarea{
+  width: 100%;
+  height: 200px;
+  resize: none;
+}
