@@ -49,16 +49,31 @@
         Show form contact with site on right position
       -->
       <div class="span4a">
+        <form class="form-horizontal">
+          <div class="control-group">
+            <label class="control-label1" for="inputName">Họ & Tên</label>
+            <div class="controls1">
+              <input name="name" ng-model="contact_detail.name" placeholder="Họ & Tên">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label1" for="inputEmail">Email</label>
+            <div class="controls1">
+              <input name="email" ng-model="contact_detail.email" placeholder="Email" 
+                ui-validate='{blacklist:notBlackListed($value)}'>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>Nội Dung</label>
+            <div>
+              <textarea name="content" ng-model="contact_detail.content" placeholder="Nội Dung"></textarea>
+            </div>
+          </div>
+          <div class="control-group">
+            <button type="button" class="btn btn-primary" id="sendBtn">Gởi</button>
+          </div>
+          </form>
         <div>
-          <label>Họ & Tên</label>
-          <input name="name" ng-model="contact_detail.name" placeholder="Họ & Tên">
-        </div>
-        <label>Email</label>
-        <input name="email" ng-model="contact_detail.email" placeholder="Email" 
-          ui-validate='{blacklist:notBlackListed($value)}'>
-        <label>Content</label>
-        <textarea name="content" ng-model="contact_detail.content" placeholder="Content"></textarea>
-        <button type="button" class="btn btn-primary" id="sendBtn">Gửi</button>
       </div>
     </div>
   </div>
