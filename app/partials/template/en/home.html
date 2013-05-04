@@ -1,32 +1,24 @@
 <div class="mainContentLeft">
-  <div class="top-header">
-    Left
+  <div class="mini-panel" ng-repeat="item in items">
+    <h2>{{item}}</h2>
+    <ul>
+      <li ng-repeat="label in items">
+        {{label}}
+      </li>
+    </ul>
   </div>
-  <ul>
-    <li>
-      Home
-    </li>
-    <li>
-      Contact
-    </li>
-    <li>
-      Tutorial
-      <li>
-        Maya
-      </li>
-      <li>
-        Realflow
-      </li>
-      <li>
-        Android
-      </li>
-    </li>
-  </ul>
 </div>
 <div class="mainContentRight">
-  Right
+  <div class="mini-panel" ng-repeat="item in items">
+    <h2>{{item}}</h2>
+    <ul>
+      <li ng-repeat="label in items">
+        {{label}}
+      </li>
+    </ul>
+  </div>
 </div>
-<div class="mainContentCenter">
+<div class="mainContentCenter setBG">
   <div class="mainContainer">
     <h1>Welcome Online ASK</h1>
     <hr>

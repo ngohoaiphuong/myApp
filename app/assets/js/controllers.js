@@ -5,6 +5,7 @@ function HomeCtrl($scope, $rootScope, $route, $routeParams){
   $scope.yourName = '';
   var url = $rootScope.data.generateURL($routeParams['lang'], '/home');
   $scope.templateUrl = url;
+  $scope.items = ["Home", "Contact", "Tutorial", "Maya", "Language", "Events", "Wikis"];
 }
 
 function MainMenuCtrl($scope, $rootScope, $routeParams){
