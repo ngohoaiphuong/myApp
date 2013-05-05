@@ -92,37 +92,6 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
   function($routeProvider, $locationProvider, $httpProvider) {
     var loading = '<div ng-include="templateUrl"><div class="loading">Loading...</div></div>';
 
-    // $.getJSON('partials/data/route.json', function(route) {
-    //   for(var i=0; i<route.length; i++){
-    //     $routeProvider.when(route[i].when,{
-    //       controller: route[i].controller,
-    //       template: loading
-    //     });  
-    //   }
-
-    //   $routeProvider.otherwise({redirectTo: '/'});
-
-    //   $locationProvider.html5Mode(false);
-    // });
-
-    // var route = [
-    //   {"when":"/", "controller":HomeCtrl },
-    //   {"when":"/about", "controller":AboutCtrl },
-    //   {"when":"/tutorial", "controller":TutorialCtrl },
-    //   {"when":"/events", "controller":EventsCtrl },
-    //   {"when":"/login", "controller":LoginCtrl },
-    //   {"when":"/projects", "controller":ProjectsCtrl },
-    //   {"when":"/contact", "controller":ContactCtrl },
-    //   {"when":"/wikis", "controller":WikisCtrl }
-    // ]
-
-    // for(var i=0; i<route.length; i++){
-    //   $routeProvider.when(route[i].when,{
-    //     controller: route[i].controller,
-    //     template: loading
-    //   });  
-    // }
-
     var route = myAppData.route;
     for(var i=0; i<route.length; i++){
       $routeProvider.when(route[i].when,{
@@ -133,4 +102,20 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
 
     $routeProvider.otherwise({redirectTo: '/'});
 }]);
+
+$(function(){
+  var x = screen.width - 100 + 'px';
+  var y = (screen.height/2) + (screen.height/4) + 'px';
+  $('#onTop').css({
+    'top': y, 
+    'left': x, 
+    'cursor': 'pointer',
+    'position': 'fixed',
+    'z-index': 100
+  });
+  $('#onTop').click(function(e){
+    // $(window).scrollTop(0);
+    $("html, body").animate({ scrollTop: "0px" });
+  });
+});
 

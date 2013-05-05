@@ -287,3 +287,23 @@ input.search-query {
 .mini-panel ul{
   list-style-type: circle;
 }
+
+.onTop{
+  width: 50px;
+  height: 50px;
+  z-index: 100;
+  position: fixed;
+  cursor: pointer;
+/*  top: 0px;
+  left: 500px;*/
+}
+
+.IconOnTop{
+  width: 50px;
+  height: 50px;
+
+  background-image: url("../img/onTop.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px 50px;
+}
