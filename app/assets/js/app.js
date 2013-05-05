@@ -114,7 +114,6 @@ $(function(){
     'z-index': 100
   });
   $('#onTop').click(function(e){
-    // $(window).scrollTop(0);
     $("html, body").animate({ scrollTop: "0px" });
   });
 });
