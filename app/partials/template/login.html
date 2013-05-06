@@ -1,3 +1,74 @@
+<script type="text/javascript">
+    (function() {
+        var po = document.createElement('script'); 
+        po.type = 'text/javascript'; 
+        po.async = true;
+        // po.src = 'https://apis.google.com/js/client:plusone.js';
+        po.src = 'https://plus.google.com/js/client:plusone.js';
+        var s = document.getElementsByTagName('script')[0]; 
+        s.parentNode.insertBefore(po, s);
+    })();
+
+    function signinCallback(authResult) {
+        if (authResult['access_token']) {
+          // Successfully authorized
+          // Hide the sign-in button now that the user is authorized, for example:
+
+          $.ajax({
+            type: 'GET',
+            url: 'https://www.googleapis.com/oauth2/v1/tokeninfo?id_token=' + authResult['id_token'],
+            async: false,
+            contentType: "application/json",
+            dataType: 'jsonp',
+            success: function(jsonData) {
+              console.log(jsonData['email']);
+              alert(jsonData['email']);
+
+              document.getElementById('signinButton').setAttribute('style', 'display: none');
+              dialogHandle.close();
+              console.log(authResult);
+            },
+            error: function(e) {
+              console.error('Error:' + e.message);
+              alert('Error:' + e.message);
+            }
+          });
+
+          gapi.client.load('plus','v1', function(){
+            console.log('begin');
+            var request = gapi.client.plus.people.get( {'userId' : 'me'} );
+            console.log('end');
+            request.execute( function(profile) {
+              console.log('profile');
+              console.log(profile.displayName);
+              alert(profile.displayName);
+              console.log('--------------------------------');
+            });
+          });
+
+
+          console.log('completed');
+
+        } else if (authResult['error']) {
+          // There was an error.
+          // Possible error codes:
+          //   "access_denied" - User denied access to your app
+          //   "immediate_failed" - Could not automatically log in the user
+          // console.log('There was an error: ' + authResult['error']);
+        }
+    }
+
+    // function render() {
+    //     gapi.signin.render('customBtn', {
+    //       //'callback': 'signinCallback',
+    //       'clientid': '841077041629.apps.googleusercontent.com',
+    //       'cookiepolicy': 'single_host_origin',
+    //       'requestvisibleactions': 'http://schemas.google.com/AddActivity',
+    //       'scope': 'https://www.googleapis.com/auth/plus.login'
+    //     });
+    // }
+</script>
+
 <div class="modal-header" ng-controller="LoginCtrl">
   <h1>Log In</h1>
   <form name="loginForm">
@@ -10,9 +81,22 @@
         <label>Password:</label>
         <input type="password" ng-model="password" placeholder="Enter Password" name="password" required>
       </div>
+      <span id="signinButton">
+        <span
+            class="g-signin"
+            data-callback="signinCallback"
+            data-clientid="392647083698.apps.googleusercontent.com"
+            data-cookiepolicy="single_host_origin"
+            data-requestvisibleactions="http://schemas.google.com/AddActivity"
+            data-scope="https://www.googleapis.com/auth/userinfo.email">
+        </span>
+      </span>
     </div>
+
+
     <div class="modal-footer">
       <button class="btn btn-primary" ng-click="login()">Log In</button>
     </div>
   </form>
 </div>
+        

@@ -6,7 +6,8 @@
       </a>
       <ul class="dropdown-menu">
         <li ng-repeat="choice in accountList">
-          <a href="{{choice.url}}">{{i18n(choice.name)}}</a>
+<!--          <a href="{{choice.url}}" id="{{choice.id}}">{{i18n(choice.name)}}</a> -->
+          <a ng-click="callFunction(choice)" id="{{choice.id}}">{{i18n(choice.name)}}</a>
         </li>
       </ul>
     </li>

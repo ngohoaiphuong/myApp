@@ -102,7 +102,8 @@ function LoginCtrl($scope, $dialog, $rootScope, $routeParams){
   $scope.opts = $rootScope.data.options.dialog;
   $scope.opts.templateUrl = 'partials/login.html';
   $scope.login = function(){
-    alert('Login:You call login method');
+    console.log(dialogHandle);
+    dialogHandle.close();
   }
 }
 
@@ -132,8 +133,9 @@ function DialogController($scope, dialog, $routeParams){
 function openDialogLogin($rootScope, $template){
   $rootScope.data.options.dialog.templateUrl = $template;
 
-  var d = $rootScope.dialog.dialog($rootScope.data.options.dialog);
-  d.open().then(function(result){
+  dialogHandle = $rootScope.dialog.dialog($rootScope.data.options.dialog);
+  dialogHandle.open().then(function(result){
+    console.log('completed');
   });
 }
 

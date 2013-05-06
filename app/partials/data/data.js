@@ -30,8 +30,8 @@ var myAppData = {
   "menus":{
     "top_menu":{
       "account":[
-        {"name":"login", "url":"#/login"},
-        {"name":"help", "url":"#/help"}
+        {"name":"login", "url":"#/login", "id":"loginCommand"},
+        {"name":"help", "url":"#/help", "id":"helpCommand"}
       ],
       "language":[
         {"name":"vietnamese", "short":"vi", "url":"#/switch"},
