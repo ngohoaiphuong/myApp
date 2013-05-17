@@ -307,6 +307,8 @@ input.search-query {
   -moz-border-radius-topleft: 8px;
   -moz-border-radius-topright: 8px;
   text-indent: 5px;
+
+  border-bottom: 3px solid red;
 }
 
 .circle_panel{
