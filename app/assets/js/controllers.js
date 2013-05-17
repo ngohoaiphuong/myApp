@@ -2,6 +2,24 @@
 
 /* Controllers */
 function HomeCtrl($scope, $rootScope, $route, $routeParams){
+  console.log('home');
+  // gapi.client.load('oauth2','v2', function(){
+  //   var request = gapi.client.oauth2.userinfo.get();
+  //   request.execute( function(profile) {
+  //     console.log(profile['email']);
+  //     gapi.client.load('plus','v1', function(){
+  //       var request = gapi.client.plus.people.get( {'userId' : 'me'} );
+  //       request.execute( function(profile) {
+  //         console.log(profile['displayName']);
+  //         console.log(profile['gender']);
+  //         console.log(profile['image']['url']);
+  //       });
+  //     });
+  //   });
+  // });
+
+  console.log('completed');
+
   $scope.yourName = '';
   var url = $rootScope.data.generateURL($routeParams['lang'], '/home');
   $scope.templateUrl = url;
@@ -102,8 +120,8 @@ function LoginCtrl($scope, $dialog, $rootScope, $routeParams){
   $scope.opts = $rootScope.data.options.dialog;
   $scope.opts.templateUrl = 'partials/login.html';
   $scope.login = function(){
-    console.log(dialogHandle);
     dialogHandle.close();
+    console.log(LoginProfile);
   }
 }
 

@@ -14,40 +14,65 @@
           // Successfully authorized
           // Hide the sign-in button now that the user is authorized, for example:
 
-          $.ajax({
-            type: 'GET',
-            url: 'https://www.googleapis.com/oauth2/v1/tokeninfo?id_token=' + authResult['id_token'],
-            async: false,
-            contentType: "application/json",
-            dataType: 'jsonp',
-            success: function(jsonData) {
-              console.log(jsonData['email']);
-              alert(jsonData['email']);
+          console.log(LoginProfile);
+          LoginProfile = {access_token:authResult['access_token'], email:undefined, userinfo:{}};
 
-              document.getElementById('signinButton').setAttribute('style', 'display: none');
-              dialogHandle.close();
-              console.log(authResult);
-            },
-            error: function(e) {
-              console.error('Error:' + e.message);
-              alert('Error:' + e.message);
-            }
-          });
+          // $.ajax({
+          //   type: 'GET',
+          //   url: 'https://www.googleapis.com/oauth2/v1/tokeninfo?id_token=' + authResult['id_token'],
+          //   async: false,
+          //   contentType: "application/json",
+          //   dataType: 'jsonp',
+          //   success: function(jsonData) {
+          //     console.log(jsonData);
+          //     // alert(jsonData['email']);
 
-          gapi.client.load('plus','v1', function(){
-            console.log('begin');
-            var request = gapi.client.plus.people.get( {'userId' : 'me'} );
-            console.log('end');
+          //     document.getElementById('signinButton').setAttribute('style', 'display: none');
+          //     dialogHandle.close();
+          //     // console.log(authResult);
+          //   },
+          //   error: function(e) {
+          //     console.error('Error:' + e.message);
+          //     alert('Error:' + e.message);
+          //   }
+          // });
+
+          LoginProfile.api = gapi;
+
+          gapi.client.load('oauth2','v2', function(){
+            var request = gapi.client.oauth2.userinfo.get();
             request.execute( function(profile) {
-              console.log('profile');
-              console.log(profile.displayName);
-              alert(profile.displayName);
-              console.log('--------------------------------');
+              LoginProfile.email = profile['email'];
+              gapi.client.load('plus','v1', function(){
+                var request = gapi.client.plus.people.get( {'userId' : 'me'} );
+                request.execute( function(profile) {
+                  LoginProfile.userinfo.displayName = profile['displayName'];
+                  LoginProfile.userinfo.gender = profile['gender'];
+                  LoginProfile.userinfo.avatar = profile['image']['url'];
+                  document.getElementById('signinButton').setAttribute('style', 'display: none');
+                  dialogHandle.close();
+                  console.log('result');
+                  console.log(LoginProfile);
+                });
+              });
             });
           });
 
+          // gapi.client.load('plus','v1', function(){
+          //   console.log('begin');
+          //   var request = gapi.client.plus.people.get( {'userId' : "117710146381241249585"} );
+          //   console.log('end');
+          //   request.execute( function(profile) {
+          //     // console.log('profile');
+          //     // console.log(profile.displayName);
+          //     alert(profile.displayName);
+          //     console.log(profile);
+          //     // console.log('--------------------------------');
+          //   });
+          // });
 
-          console.log('completed');
+
+          // console.log('completed');
 
         } else if (authResult['error']) {
           // There was an error.
@@ -88,7 +113,8 @@
             data-clientid="392647083698.apps.googleusercontent.com"
             data-cookiepolicy="single_host_origin"
             data-requestvisibleactions="http://schemas.google.com/AddActivity"
-            data-scope="https://www.googleapis.com/auth/userinfo.email">
+            data-scope="https://www.googleapis.com/auth/userinfo.email"
+            data-scope="https://www.googleapis.com/auth/userinfo.profile">
         </span>
       </span>
     </div>

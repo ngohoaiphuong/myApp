@@ -1,6 +1,8 @@
 'use strict';
 
 var dialogHandle;
+
+var LoginProfile;
 /* App Module */
 var myApp = angular.module('onlineASK', ['ui.bootstrap', 'ngCookies', 'ui']);
 
@@ -83,6 +85,10 @@ myApp.run(function($rootScope, $location, $route, $dialog, $http, i18n){
   $rootScope.url = function(){
     return $rootScope.data.options.default.url;
   }
+
+  $rootScope.$on('getComplete', function(){
+    alert('completed');
+  });
 });
 
 myApp.config(['$locationProvider', function($location) {
@@ -126,5 +132,9 @@ $(function(){
   $('#onTop').click(function(e){
     $("html, body").animate({ scrollTop: "0px" });
   });
+
+  function OnLoadCallback(){
+    console.log('OnLoadCallback');
+  }
 });
 
